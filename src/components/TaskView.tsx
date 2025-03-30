@@ -72,7 +72,7 @@ export default function TaskView({ taskId }: Readonly<{ taskId?: string }>) {
       body: JSON.stringify({
         message: task?.message,
         user_id: "test_user",
-        run_at: new Date().toISOString(),
+        run_at: new Date().valueOf(),
       }),
     });
 
