@@ -67,6 +67,7 @@ export default function TaskView({ taskId }: Readonly<{ taskId?: string }>) {
       mode: "cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         message: task?.message,
