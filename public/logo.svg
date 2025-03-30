@@ -1,0 +1,14 @@
+<svg
+  role="img"
+  width="128"
+  height="128"
+  viewBox="0 0 128 128"
+  version="1.1"
+  fill="#4c566a"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Taskforce</title>
+  <path
+    d="M 15.999672,-15.999672 V 15.999672 H 119.76483 L 67.882251,67.882251 90.509668,90.509668 181.01934,0 90.509668,-90.509668 67.882251,-67.882251 119.76483,-15.999672 Z"
+    transform="rotate(45)"></path>
+</svg>
