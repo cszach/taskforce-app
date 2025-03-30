@@ -62,16 +62,18 @@ export default function TaskView({ taskId }: Readonly<{ taskId?: string }>) {
   const runTask = async () => {
     setRunLoading(true);
 
-    const response = await fetch(
-      `https://api.runtaskforce.com/schedule?message=${task?.message}`,
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
+    const response = await fetch(`https://api.runtaskforce.com/schedule`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        message: task?.message,
+        user_id: "test_user",
+        run_at: new Date().toISOString(),
+      }),
+    });
 
     setRunLoading(false);
 
