@@ -140,7 +140,7 @@ export default function TaskView({ taskId }: Readonly<{ taskId?: string }>) {
 
     const form = e.currentTarget;
     const input = form.querySelector("input");
-    const message = input?.value!;
+    const message = input?.value || "";
 
     const task = {
       message,
@@ -198,7 +198,7 @@ export default function TaskView({ taskId }: Readonly<{ taskId?: string }>) {
                   title={step.title}
                   description={step.description}
                   moveListItem={moveListItem}
-                  onEditStart={(_index) => {
+                  onEditStart={() => {
                     setNumStepsBeingEdited(numStepsBeingEdited + 1);
                   }}
                   onEditEnd={(index, title, description) => {

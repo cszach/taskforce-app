@@ -27,7 +27,7 @@ export default function Step({
 }>) {
   const [editing, setEditing] = useState(false);
 
-  const [_, dragRef] = useDrag(() => ({
+  const [, dragRef] = useDrag(() => ({
     type: "STEP",
     item: { index },
     collect: (monitor) => ({
@@ -35,7 +35,7 @@ export default function Step({
     }),
   }));
 
-  const [_spec, dropRef] = useDrop(() => ({
+  const [, dropRef] = useDrop(() => ({
     accept: "STEP",
     hover: (
       item: { index: number },
@@ -43,11 +43,11 @@ export default function Step({
     ) => {
       const dragIndex = item.index;
       const hoverIndex = index;
-      // @ts-ignore:next-line
+      // @ts-expect-error - ref is not null
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      // @ts-ignore:next-line
+      // @ts-expect-error - monitor is not null
       const hoverActualY = monitor.getClientOffset().y - hoverBoundingRect.top;
 
       if (dragIndex < hoverIndex && hoverActualY < hoverMiddleY) return;
@@ -62,7 +62,7 @@ export default function Step({
   const dragDropRef = dragRef(dropRef(ref));
 
   return (
-    // @ts-ignore:next-line
+    // @ts-expect-error - ref is not null
     <li ref={dragDropRef} className="list-row items-center gap-y-0">
       <div className="flex items-center relative">
         <CircleIcon className="hidden" />
@@ -90,7 +90,9 @@ export default function Step({
         className="btn btn-square btn-ghost"
         onClick={() => {
           if (editing) {
+            // @ts-expect-error - ref is not null
             const title = ref.current.querySelector("input").value;
+            // @ts-expect-error - ref is not null
             const description = ref.current.querySelector("textarea").value;
 
             onEditEnd(index, title, description);

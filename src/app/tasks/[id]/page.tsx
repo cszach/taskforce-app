@@ -7,6 +7,12 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Link from "next/link";
 
+type Task = {
+  id?: number;
+  message: string;
+  status: string;
+};
+
 export default function Tasks({
   params,
 }: Readonly<{ params?: Promise<{ id?: string }> }>) {
@@ -67,9 +73,9 @@ export default function Tasks({
                 </div>
               </div>
               <ul className="menu w-full p-0">
-                {tasks.map((task) => (
-                  <li key={task.task_id} className="flex items-center gap-2">
-                    <a href={`/tasks/${task.task_id}`}>
+                {tasks.map((task: Task) => (
+                  <li key={task.id} className="flex items-center gap-2">
+                    <a href={`/tasks/${task.id}`}>
                       <div className="grow-1 text-nowrap text-ellipsis overflow-x-hidden relative">
                         <span>{task.message}</span>
                       </div>
